@@ -64,6 +64,9 @@ console.log(input)
 let fs = require('fs')
 let input = fs.readFileSync('dev/stdin').toString().split('\n')
 
+const fs = require('fs'); 
+const [x, y] = fs.readFileSync(0).toString().trim().split('\n').map(Number); 
+
 // 예제 데이터 개수가 주어진 경우
 let cnt = input[0]
 let lines = []
