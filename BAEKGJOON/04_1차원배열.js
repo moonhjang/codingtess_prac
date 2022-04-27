@@ -210,3 +210,5 @@ for(let i=0; i<t; i++){
   const answer = (b.length/a[0]*100).toFixed(3)+'%'
   console.log(answer)
 }
+
+// test입니다.
