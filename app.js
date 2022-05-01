@@ -1,74 +1,27 @@
-const fs = require('fs');
-const { start } = require('repl');
-const stdin = (process.platform === 'linux'
-    ? fs.readFileSync('/dev/stdin').toString()
-    : `110`
-).split('\n');
 
-const input = (() => {
-  let line = 0;
-  return () => stdin[line];
-})();
+// 1~10000이 들어간 리스트만들기 (1)
 
-const t = input()
-const t_num = Number(t)
-// console.log( t)
-const count = 0;
+// for (let i = 1; i < 10000; i++){
+  i = 9999
+  const num = (i+'').split('').map(Number)
 
-if (t_num < 100) {
-  console.log('here')
-  count = t_num
-  console.log(count, t_num, "100이하")
-} 
+  console.log(num)
 
-if (t_num >= 100 && t_num <= 1000) {
-  console.log('here1')
-  for (let i=0; i<10; i++){
-    const compare = t[1] - t[0] 
-    console.log(compare, '이건뭐디?')
-      if (t[1]+compare === t[2]){
-        count ++
-        console.log(count, "100이상인데 한 수")
-      } 
-  // }
-}
+  // const numList = [Number(num)+'']
+  // console.log(numList)
+  const sum = num.reduce((prev, curr) => prev + curr )
+  // console.log(a)
+  const createNum = i + sum
+  console.log(createNum)
 
-// for (let i=1; i < 10{
+  // 리스트에서 create Num 삭제하기 (2)
 
-//     if (t < 100) {
-//       count = t
-//       console.log(count, t, "100이하")
-//     } else if (t >= 100 && t <= 1000) {
-//       const compare = t[1] - t[0] 
-//       if (t[1]+compare === t[2]){
-//         count ++
-//         console.log(count, "100이상인데 한 수")
-//       } 
-//     }
-    
-    
-         
+    if (i === createNum)
+
+
+
+
+
 // }
 
-// console.log(count)
-//   if ( t < 10){
-//     count = 9
-  
-//   for(let j=0; j<10; j++){
-//     if (let )
-//   }
-//   
-
-//   let total = 0
-//   for (let j=1; j<= a[0]; j++){
-//     total += a[j]
-//   }
-//   const b = a.filter(num => num = num > total/a[0])
-//   const answer = (b.length/a[0]*100).toFixed(3)+'%'
-//   console.log(answer)
-
-
-
-
-
-
+//(3) 리스트를 콘솔로 내보내기
