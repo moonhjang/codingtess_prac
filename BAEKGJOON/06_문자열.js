@@ -127,13 +127,13 @@ console.log(a.length > 1? '?':'1')
 
 
 
-// 1152 단어의 개수  (확인바람. 왜 틀리지????)
+// 1152 단어의 개수 (빈값만 있는 테스트가 있는 점 유의!)
 const { count } = require('console');
 const fs = require('fs');
 const { start } = require('repl');
 const stdin = (process.platform === 'linux'
     ? fs.readFileSync('/dev/stdin').toString()
-    : `The last character is a blank`
+    : `  `
 ).split('\n');
 
 const input = (() => {
@@ -141,15 +141,122 @@ const input = (() => {
   return () => stdin[line];
 })();
 
-const t = input().split(' ')
-console.log(t.length)
-
+const t = input().trim()
+if (t === ''){
+  console.log(0)
+} else {
+  console.log(t.split(' ').length)
+}
 
 
 // 2908 상수
+const { count } = require('console');
+const fs = require('fs');
+const { start } = require('repl');
+const stdin = (process.platform === 'linux'
+    ? fs.readFileSync('/dev/stdin').toString()
+    : `221 231`
+).split('\n');
 
-// 5622 다이얼
+const input = (() => {
+  let line = 0;
+  return () => stdin[line];
+})();
 
-// 2941 크로아티아 알파벳
+const t = input().split(' ').map(num => Number(num.split('').reverse().join('')))
+
+console.log(Math.max(...t))
+
+
+// 5622 다이얼 (문제 이해 필요)
+const fs = require('fs');
+const stdin = (process.platform === 'linux'
+    ? fs.readFileSync('/dev/stdin').toString()
+    : `UNUCIC`
+).split('\n');
+
+const input = (() => {
+  let line = 0;
+  return () => stdin[line++];
+})();
+
+let t = input();
+let result = 0;
+const phone = {2: "ABC",
+              3: "DEF",
+              4: "GHI",
+              5: "JKL",
+              6: "MNO",
+              7: "PQRS",
+              8: "TUV",
+              9: "WXYZ",}
+
+for (let i=0; i<t.length; i++){
+  
+  for (let j=2; j<=9; j++){
+    if(phone[j].includes(t[i])){
+      result += j + 1;
+      break;
+    }
+  }
+}
+console.log(result)
+
+
+// 2941 크로아티아 알파벳 (문제 이해 필요)
+const fs = require('fs');
+const stdin = (process.platform === 'linux'
+    ? fs.readFileSync('/dev/stdin').toString()
+    : `ddz=z=`
+).split('\n');
+
+const input = (() => {
+  let line = 0;
+  return () => stdin[line++];
+})();
+
+let t = input().toString().trim();
+console.log(t.replace(/c=|c-|dz=|d-|lj|nj|s=|z=|./g,'a').length);
+
+
 
 // 1316 그룹 단어 체커
+const fs = require('fs');
+const stdin = (process.platform === 'linux'
+    ? fs.readFileSync('/dev/stdin').toString()
+    : `2
+yzyzy
+zyzyz`
+).split('\n');
+
+const input = (() => {
+  let line = 0;
+  return () => stdin[line++];
+})();
+
+let t = input();
+let result = []
+let count = 0;
+
+
+for (let i = 0; i < t; i++) {
+    const letter = input().split(' ')
+    const each = letter[0].split('')
+    let list = [];
+
+    for (let j = 0; j < each.length; j++) {
+        if (list.indexOf(each[j]) === -1){
+          count = 1;
+          list.push(each[j])
+        } else if (each[j] === each[j-1]) {
+          list.push(each[j])
+        } else if (each[j] !== each[j-1] && list.indexOf(each[j]) > -1){
+          count = 0;
+          break;
+        } 
+    }
+
+    result.push(count)
+    final = result.filter(num => num === 1)
+}
+console.log(final.length)
