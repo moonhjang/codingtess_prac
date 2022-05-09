@@ -1,7 +1,32 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const fs = require('fs');
 const stdin = (process.platform === 'linux'
     ? fs.readFileSync('/dev/stdin').toString()
-    : `ddz=z=`
+    : `M`
 ).split('\n');
 
 const input = (() => {
@@ -9,85 +34,42 @@ const input = (() => {
   return () => stdin[line++];
 })();
 
-let t = input().toString().trim();
-console.log(t.replace(/c=|c-|dz=|d-|lj|nj|s=|z=|./g,'a').length);
+const t = input().toUpperCase().split('').sort() 
+const findStr= [];
+let count = 0;
 
+// 글자가 하나인경우
+for (let i=0; i<t.length; i++){
+  if (t.length === 1){                     
+    findStr.push(t[0])
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const fs = require('fs');
-// const stdin = (process.platform === 'linux'
-//     ? fs.readFileSync('/dev/stdin').toString()
-//     : `zzzzaaaaffff`
-// ).split('\n');
-
-// const input = (() => {
-//   let line = 0;
-//   return () => stdin[line++];
-// })();
-
-// const t = input().toUpperCase().split('').sort() 
-// const findStr= [];
-// let count = 0;
-
-// // 글자가 하나인경우
-// for (let i=0; i<t.length; i++){
-//   if (t.length === 1){                     
-//     findStr.push(t[0])
-//   }
-
-//   // 앞 글자 또는 전글자가 같은 경우
-//   if (t[i] === t[i+1] || t[i] === t[i-1]){  
-//       // findStr 배열이 없거나, 가상의 findStr 배열의 글자와 같은 경우
-//       if(t[i] === findStr[0]|| findStr.length === 0){
-//         findStr.push(t[i])  //현재글자를 넣어줌
-//         count += 1
-//       } else {
-//         findStr.pop()       //배열에 있거나, 글자가 다른경우 가상의 배열을 삭제
-//         count -= 1
-//           if (findStr.length === 0){
-//             break;
-//           }
-//       }
-//   } 
-// }
-
-// console.log(findStr.length > 0?  findStr[0] :'?')
+  // 앞 글자 또는 전글자가 같은 경우
+  if (t[i] === t[i+1] || t[i] === t[i-1]){  
+      // findStr 배열이 없거나, 가상의 findStr 배열의 글자와 같은 경우
+      if(t[i] === findStr[0]|| findStr.length === 0){
+        // console.log(findStr)
+        findStr.push(t[i])  //현재글자를 넣어줌
+        count += 1
+      } else {
+        // console.log(findStr)
+        findStr.pop()       //배열에 있거나, 글자가 다른경우 가상의 배열을 삭제
+        count -= 1
+          if (findStr.length === 0){
+            break;
+          }
+      }
+  } 
+}
+// console.log(findStr)
+console.log(findStr.length > 0?  findStr[0] :'?')
 
 
 
 // const fs = require('fs');
 // const stdin = (process.platform === 'linux'
 //     ? fs.readFileSync('/dev/stdin').toString()
-//     : `Mississipi`
+//     : `BBAAA`
 // ).split('\n');
 
 // const input = (() => {
