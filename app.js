@@ -56,7 +56,7 @@
 const fs = require('fs');
 const stdin = (process.platform === 'linux'
     ? fs.readFileSync('/dev/stdin').toString()
-    : `18`
+    : `9`
 ).split('\n');
 
 const input = (() => {
@@ -64,68 +64,89 @@ const input = (() => {
   return () => stdin[line];
 })();
 
-const t = Number(input())
-
-let pack = [];
-
+let t = Number(input())
+let count = 0;
 
 
-for (let i=1; i<7; i++){
-  for (let j=1; j<7; j++){
-    const delivery = 3*i + 5*j
-    // console.log(typeof delivery)
-    // console.log(typeof t)
-    // console.log(t % 3 )
-    const left3 =  t % 3
-    const left5 =  t % 5
-    console.log(left3 === 0 || left5 === 0, '똑떨어짐.')
-    console.log(left3 % 5 === 0 || left5 % 3 === 0, '그래도 똑떨어짐')
-    console.log(left3 % 5 !== 0 && left5 % 3 !== 0, '안됨.')
-    // console.log(left5 % 3 === 0 )
-    // console.log(left5 % 3 !== 0)
-    // console.log(left5 % 5 !== 0 )
-
-    if ( left3 === 0 || left5 === 0 ){
-      console.log( t === delivery, '똑떨어지나?---1')
-      if( t === delivery) {
-        console.log(1, i,j)
-        console.log(i+j)
-        break;
-      } 
-    } else if (left3 % 5 === 0 || left5 % 3 === 0){
-      console.log( t === delivery, '똑떨어지나?---2')
-      if( t === delivery) {
-        console.log(2, i,j)
-        console.log(i+j)
-        break;
-      } 
-    } else if (left3 % 5 !== 0 && left5 % 3 !== 0){
-      console.log( t === delivery, '똑떨어지나?---3')
-      console.log(3, i,j)
-      console.log(-1)
-      break;
-    } else {
-      console.log(i,j)
-    }
+while(t > 0){
+  console.log(t)
+  if (t % 5 === 1) 
+    let left = t / 5 
+    count = left + 1
+  } else if (t % 5 === 2) {
+    let left = t / 5 
+    count = left + 2
+  } else if (t % 5 === 3) {
+    
+  } else if (t % 5 === 4) {
 
   }
 
-    if ( left3 === 0 || left3 % 5 === 0 || left5 === 0 || left5 % 3 === 0){
+  count ++;
+}
 
-    // if ( left3 === 0 || left5 === 0 ){
-      if( t === delivery) {
-      console.log(i,j)
-      console.log(i+j)
-      break;
-      }
-    } else if (left3 % 5 !== 0 && left5 % 3 !== 0) {
-      console.log(-1)
-      break;
-    }
-  } 
+console.log(count)
+
+// let pack = [];
+
+
+
+// for (let i=1; i<7; i++){
+//   for (let j=1; j<7; j++){
+//     const delivery = 3*i + 5*j
+//     // console.log(typeof delivery)
+//     // console.log(typeof t)
+//     // console.log(t % 3 )
+//     const left3 =  t % 3
+//     const left5 =  t % 5
+//     console.log(left3 === 0 || left5 === 0, '똑떨어짐.')
+//     console.log(left3 % 5 === 0 || left5 % 3 === 0, '그래도 똑떨어짐')
+//     console.log(left3 % 5 !== 0 && left5 % 3 !== 0, '안됨.')
+//     // console.log(left5 % 3 === 0 )
+//     // console.log(left5 % 3 !== 0)
+//     // console.log(left5 % 5 !== 0 )
+
+//     if ( left3 === 0 || left5 === 0 ){
+//       console.log( t === delivery, '똑떨어지나?---1')
+//       if( t === delivery) {
+//         console.log(1, i,j)
+//         console.log(i+j)
+//         break;
+//       } 
+//     } else if (left3 % 5 === 0 || left5 % 3 === 0){
+//       console.log( t === delivery, '똑떨어지나?---2')
+//       if( t === delivery) {
+//         console.log(2, i,j)
+//         console.log(i+j)
+//         break;
+//       } 
+//     } else if (left3 % 5 !== 0 && left5 % 3 !== 0){
+//       console.log( t === delivery, '똑떨어지나?---3')
+//       console.log(3, i,j)
+//       console.log(-1)
+//       break;
+//     } else {
+//       console.log(i,j)
+//     }
+
+//   }
+
+//     if ( left3 === 0 || left3 % 5 === 0 || left5 === 0 || left5 % 3 === 0){
+
+//     // if ( left3 === 0 || left5 === 0 ){
+//       if( t === delivery) {
+//       console.log(i,j)
+//       console.log(i+j)
+//       break;
+//       }
+//     } else if (left3 % 5 !== 0 && left5 % 3 !== 0) {
+//       console.log(-1)
+//       break;
+//     }
+//   } 
  
 
-console.log(pack)
+// console.log(pack)
 
 
 
