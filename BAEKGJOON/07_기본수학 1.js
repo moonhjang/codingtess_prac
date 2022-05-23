@@ -3,7 +3,7 @@
 const fs = require('fs');
 const stdin = (process.platform === 'linux'
     ? fs.readFileSync('/dev/stdin').toString()
-    : `0 60 70`
+    : `1000 100 110`
 ).split('\n');
 
 const input = (() => {
@@ -27,6 +27,8 @@ else {
   const answer = Math.floor ( A / margin ) +1
   console.log(answer)
 }
+
+
 
 // 2292 벌집
 const fs = require('fs');
@@ -57,6 +59,10 @@ for (let i=1; i < t; i++){
     break;
   }
 }
+
+
+
+
 
 // 1193 분수찾기
 // 이것 진짜 너무 어려움. (다른사람것)
