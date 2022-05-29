@@ -172,4 +172,5 @@ const input = (() => {
 const t = input().split(' ').map(BigInt)
 
 const Int = t[0] + t[1]
-console.log(Int.toString())
+const answer = Int.toString()
+console.log(answer)
