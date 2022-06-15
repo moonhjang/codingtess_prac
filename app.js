@@ -1,7 +1,7 @@
 const fs = require('fs');
 const stdin = (process.platform === 'linux'
     ? fs.readFileSync('/dev/stdin').toString()
-    : `joonas`
+    : `2541`
 ).split('\n');
 
 const input = (() => {
@@ -9,6 +9,6 @@ const input = (() => {
   return () => stdin[line++];
 })();
 
-const t = input()
+const t = Number(input())
 
-console.log(t + '??!')
+console.log(t - 543)
