@@ -93,19 +93,40 @@ if (minute < 0) {
 console.log(hour + ' ' + minute);
 
 
-// 2525 오븐시계 =====================> 다시 확인
-const fs = require('fs'); 
-const input = fs.readFileSync("/dev/stdin").toString().trim().split('\n'); 
-const current = input[0].split(' ').map(Number); 
+// 2525 오븐시계
+const fs = require('fs');
+const stdin = (process.platform === 'linux'
+    ? fs.readFileSync('/dev/stdin').toString()
+    : `23 48
+25`
+).split('\n');
 
-const currentHour = current[0]; 
-const currentMinute = current[1]; 
-const cookTime = Number(input[1]); 
+const input = (() => {
+  let line = 0;
+  return () => stdin[line++];
+})();
 
-const cookEndTimeHour = parseInt((currentHour*60 + currentMinute + cookTime)/ 60) ; 
-const cookEndTimeMinute = parseInt((currentHour*60 + currentMinute + cookTime)% 60); 
+const t1 = input().split(' ').map(Number)
+const t2 = Number(input())
 
-console.log(cookEndTimeHour >= 24 ? cookEndTimeHour - 24 : cookEndTimeHour, cookEndTimeMinute
+const min = t1[1]+t2
+if (min >= 60){
+  const addHour = Math.floor(min/60)
+
+  // 24시 일때는 0으로 표현
+  const hour = t1[0] + addHour
+  if ( hour >= 24) {
+    const calHour = Math.floor(hour/24)
+    t1[0] = hour - (24*calHour)
+  } else {
+    t1[0] = hour
+  }
+  t1[1]= min-(60*addHour)
+  console.log(t1.join(' '))
+} else {
+  t1[1]= min
+  console.log(t1.join(' '))
+}
 
 
 // 2480 주사위 세개 (실패)
