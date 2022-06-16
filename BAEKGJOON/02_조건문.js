@@ -129,29 +129,35 @@ if (min >= 60){
 }
 
 
-// 2480 주사위 세개 (실패)
-const fs = require('fs'); 
-const [x, y, z] = fs.readFileSync(0).toString().trim().split('\n').map(Number); 
+// 2480 주사위 세개
+const fs = require('fs');
+const stdin = (process.platform === 'linux'
+    ? fs.readFileSync('/dev/stdin').toString()
+    : `2 2 2`
+).split('\n');
 
-// const [x, y, z] = [6,2,5]
-if ( x === y && y === z) {
-    price1 = 10000 + (x*1000)
-    console.log(price1)
-} else if ( x === y ){
-    price2 = 1000 + (x*100)
-    console.log(price2)
-} else if ( y === z ){
-    price2 = 1000 + (y*100)
-    console.log(price2)
-} else if ( x === z ){
-    price2 = 1000 + (z*100)
-    console.log(price2)
+const input = (() => {
+  let line = 0;
+  return () => stdin[line++];
+})();
+
+const t = input().split(' ').map(Number)
+
+let answer = 0;
+
+if (t[0] === t[1] && t[1] === t[2]){
+  answer = 10000 + t[0] * 1000
+} else if (t[0] === t[1] || t[1] === t[2]){
+  answer = 1000 + t[1] * 100
+} else if (t[0] === t[2]){
+  answer = 1000 + t[0] * 100
 } else {
-    list = [x,y,z]
-    max = Math.max(...list)
-    price3 = max*100
-    console.log(price3)
+  const max = Math.max(...t)
+  answer = max * 100
 }
 
-// 2480 주사위 세개 (다른 분)
+console.log(answer)
+
+
+
 
