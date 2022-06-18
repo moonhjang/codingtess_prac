@@ -1,7 +1,7 @@
 const fs = require('fs');
 const stdin = (process.platform === 'linux'
     ? fs.readFileSync('/dev/stdin').toString()
-    : `2 2 2`
+    : `26`
 ).split('\n');
 
 const input = (() => {
@@ -9,20 +9,24 @@ const input = (() => {
   return () => stdin[line++];
 })();
 
-const t = input().split(' ').map(Number)
+const t = Number(input())
+let num = t
+let sum;
+let i = 0
 
-let answer = 0;
+while (true){
+  i++;
 
-if (t[0] === t[1] && t[1] === t[2]){
-  answer = 10000 + t[0] * 1000
-} else if (t[0] === t[1] || t[1] === t[2]){
-  answer = 1000 + t[1] * 100
-} else if (t[0] === t[2]){
-  answer = 1000 + t[0] * 100
-} else {
-  const max = Math.max(...t)
-  answer = max * 100
+  sum = Math.floor(num/ 10) + num% 10;
+  console.log(i, Math.floor(num/ 10), num% 10)
+
+  console.log(i, (num % 10)* 10, sum % 10, num, sum)
+  num = (num % 10) * 10 + sum % 10;
+  // console.log(i, (num % 10)* 10, sum % 10, num)
+
+  if (t === num){
+    break;
+  }
 }
 
-console.log(answer)
-
+console.log(i)

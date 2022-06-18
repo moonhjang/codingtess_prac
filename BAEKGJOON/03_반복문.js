@@ -259,4 +259,38 @@ for (let i = 0; i < stdin.length -1; i++) {
 }
 
 
-// 1110 더하기 사이클
+// 1110 더하기 사이클 (다른사람)
+
+// 1의 자리에 있는 수 구하기 : num % 10
+// 10의 자리에 있는 수 구하기 : Math.floor(num/10)
+// 1의 자리에 있는 수 10의 자리 수로 만들기 : (num % 10) * 10
+
+
+const fs = require('fs');
+const stdin = (process.platform === 'linux'
+    ? fs.readFileSync('/dev/stdin').toString()
+    : `26`
+).split('\n');
+
+const input = (() => {
+  let line = 0;
+  return () => stdin[line++];
+})();
+
+const t = Number(input())
+let num = t
+let sum;
+let i = 0
+
+while (true){
+  i++;
+
+  sum = Math.floor(num/ 10) + num% 10;
+  num = (num % 10) * 10 + sum % 10;
+
+  if (t === num){
+    break;
+  }
+}
+
+console.log(i)
