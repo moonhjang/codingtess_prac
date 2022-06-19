@@ -2,12 +2,7 @@ const fs = require('fs');
 const { start } = require('repl');
 const stdin = (process.platform === 'linux'
     ? fs.readFileSync('/dev/stdin').toString()
-    : `5
-5 50 50 70 80 100
-7 100 95 90 80 70 60 50
-3 70 90 80
-3 70 90 81
-9 100 99 98 97 96 95 94 93 91`
+    : `zZa`
 ).split('\n');
 
 const input = (() => {
@@ -15,16 +10,30 @@ const input = (() => {
   return () => stdin[line++];
 })();
 
-const t = input()
+const t = input().toLowerCase() 
+console.log(t)
 
-for(let i=0; i<t; i++){
-  const a = input().split(' ').map(Number)
+const result = new Array(26).fill(0);
+console.log(result)
 
-  let total = 0
-  for (let j=1; j<= a[0]; j++){
-    total += a[j]
-  }
-  const b = a.filter(num => num = num > total/a[0])
-  const answer = (b.length/a[0]*100).toFixed(3)+'%'
-  console.log(answer)
+for (let i = 0; i < t.length; i++) {
+  result[t.charCodeAt(i) - 97] ++;
+  console.log(t.charCodeAt(i)-97)
 }
+console.log(result)
+const max = Math.max(...result);
+console.log(max)
+const index = result.indexOf(max);
+console.log(index, '???' )
+let isSame = false;
+console.log(result)
+
+for (let j = 0; j < 26; j++) {
+  if (result[j] === max && index != j) {
+    console.log(result[j])
+    isSame = true;
+    break;
+  }
+}
+
+console.log(isSame ? "?" : String.fromCharCode(index + 65));

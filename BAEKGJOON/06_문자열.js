@@ -122,7 +122,30 @@ for (let i=0; i<t.length; i++){
 console.log(findStr.length > 0?  findStr[0] :'?')
 
 
+//_______________________1157 나를 제외한 천재____________________________//
+// charCodeAt를 사용한 풀이
 
+let input = require('fs').readFileSync('/dev/stdin').toString().toLowerCase();
+
+const result = new Array(26).fill(0);
+
+for (let i = 0; i < input.length; i++) {
+  result[input.charCodeAt(i) - 97] ++;
+}
+
+const max = Math.max(...result);
+const index = result.indexOf(max);
+
+let isSame = false;
+
+for (let j = 0; j < 26; j++) {
+  if (result[j] === max && index != j) {
+    isSame = true;
+    break;
+  }
+}
+
+console.log(isSame ? "?" : String.fromCharCode(index + 65));
 
 
 // 1152 단어의 개수 (빈값만 있는 테스트가 있는 점 유의!)
