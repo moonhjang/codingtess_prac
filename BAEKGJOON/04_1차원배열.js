@@ -211,7 +211,7 @@ for(let i=0; i<t; i++){
   console.log(answer)
 }
 
-// 다른분
+// 4344_다른분
 let input = require('fs').readFileSync('/dev/stdin').toString().split('\n');
 
 let num = input[0] * 1;
