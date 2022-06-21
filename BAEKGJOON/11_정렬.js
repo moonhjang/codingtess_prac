@@ -1,3 +1,4 @@
+// 2750 수 정렬하기 (다시 확인할 것)
 const fs = require('fs');
 const { start } = require('repl');
 const stdin = (process.platform === 'linux'
