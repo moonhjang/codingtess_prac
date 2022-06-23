@@ -30,7 +30,7 @@ arrangedNum.forEach(each => console.log(each))
 
 // 2751 수 정렬하기2
 
-// 1427 소트인사이드(정답확인)
+// 1427 소트인사이드
 const fs = require('fs');
 const { start } = require('repl');
 const stdin = (process.platform === 'linux'
@@ -45,3 +45,47 @@ const input = (() => {
 
 const t = input().split('').map(Number).sort((a,b)=>b-a).join('')
 console.log(t)
+
+
+// 11650 좌표 정렬하기
+
+// 11651 좌표 정렬하기2
+
+// 1181 단어 정렬 
+const fs = require('fs');
+const { start } = require('repl');
+const stdin = (process.platform === 'linux'
+    ? fs.readFileSync('/dev/stdin').toString()
+    : `13
+but
+i
+wont
+hesitate
+no
+more
+no
+more
+it
+cannot
+wait
+im
+yours`
+).split('\n');
+
+const input = (() => {
+  let line = 0;
+  return () => stdin[line++];
+})();
+
+const t = Number(input())
+const arr = [];
+
+for(i=0; i<t; i++){
+  const letter = input()
+  arr.push(letter)
+}
+arr.sort().sort((a, b)=> a.length-b.length)
+const set = new Set(arr)
+set.forEach(a => console.log(a))
+
+
