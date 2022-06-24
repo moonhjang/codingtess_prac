@@ -2,20 +2,10 @@ const fs = require('fs');
 const { start } = require('repl');
 const stdin = (process.platform === 'linux'
     ? fs.readFileSync('/dev/stdin').toString()
-    : `13
-but
-i
-wont
-hesitate
-no
-more
-no
-more
-it
-cannot
-wait
-im
-yours`
+    : `3
+21 Junkyu
+21 Dohyun
+20 Sunyoung`
 ).split('\n');
 
 const input = (() => {
@@ -27,10 +17,9 @@ const t = Number(input())
 const arr = [];
 
 for(i=0; i<t; i++){
-  const letter = input()
-  arr.push(letter)
+  const name = input()
+  arr.push(name)
 }
-arr.sort().sort((a, b)=> a.length-b.length)
-const set = new Set(arr)
-set.forEach(a => console.log(a))
+arr.sort((a,b) => a.split(' ')[0]-b.split(' ')[0])
+arr.forEach(a => console.log(a))
 
