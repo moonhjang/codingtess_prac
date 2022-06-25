@@ -1,3 +1,6 @@
+// 숫자카드
+
+// 14425 문자열 집합
 const fs = require('fs');
 const { start } = require('repl');
 const stdin = (process.platform === 'linux'
