@@ -1,6 +1,6 @@
 // 숫자카드
 
-// 14425 문자열 집합
+// 14425 문자열 집합 (시간 초과: 다시풀기)
 const fs = require('fs');
 const { start } = require('repl');
 const stdin = (process.platform === 'linux'

@@ -154,7 +154,27 @@ const V = t[2];
 console.log(Math.ceil((V - B) / (A - B)));
 
 
-// 2839 설탕배달
+// 2839 설탕배달 (코드 다시 확인)
+let input = require('fs').readFileSync('/dev/stdin');
+
+let count = 0;
+
+while (true) {
+  if (input % 5 === 0) {
+    console.log(input / 5 + count);
+    break;
+  }
+    
+  if (0 > input) {
+    console.log(-1);
+    break;
+  }
+
+  count++;
+  input -= 3;
+}
+
+
 
 // 10757 큰수 A+B 
 // BigInt()를 알았어야 하는문제
