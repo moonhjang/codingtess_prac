@@ -56,6 +56,38 @@ for (let i = 1; i <= t; i++){
 }
 console.log(answer)
 
+// 25304 영수증
+const fs = require('fs');
+const { start } = require('repl');
+const stdin = (process.platform === 'linux'
+    ? fs.readFileSync('/dev/stdin').toString()
+    : `260000
+    4
+    20000 5
+    30000 2
+    10000 6
+    5000 8`
+).split('\n');
+
+const input = (() => {
+  let line = 0;
+  return () => stdin[line++];
+})();
+
+const total = input()
+const count  = input()
+
+let calculate = 0;
+for (let i = 0; i < count; i++) {
+  const list = input().trim().split(' ').map(Number)
+  const multiple = list[0] * list[1]
+  calculate += multiple
+} 
+const result = calculate == total? 'Yes': 'No'
+console.log(result)
+
+
+
 // 15552 빠른 A+B =======================> 다시확인
 const fs = require('fs');
 const stdin = (process.platform === 'linux'

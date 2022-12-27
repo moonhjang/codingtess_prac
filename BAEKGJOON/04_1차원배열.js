@@ -1,3 +1,32 @@
+// 개수 세기
+const fs = require('fs');
+const { start } = require('repl');
+const stdin = (process.platform === 'linux'
+    ? fs.readFileSync('/dev/stdin').toString()
+    : `11
+    1 4 1 2 4 2 4 2 3 4 4
+    5`
+).split('\n');
+
+const input = (() => {
+  let line = 0;
+  return () => stdin[line++];
+})();
+
+const t = input()
+const list = input().trim().split(' ').map(Number)
+const num = input().trim()
+
+let answer =0;
+for (let i=0; i<t; ++i){
+  const result = list[i] == num
+  answer = result == true ? answer+1 : answer;
+}
+
+console.log(answer)
+
+
+
 // 10818 최소, 최대
 const fs = require('fs');
 const { start } = require('repl');
@@ -51,6 +80,58 @@ const max = Math.max(...list)
 const index = list.indexOf(max) +  1
 console.log(max)
 console.log(index)
+
+
+// 5597 과제 안내신 분...?
+const fs = require('fs');
+const { start } = require('repl');
+const stdin = (process.platform === 'linux'
+    ? fs.readFileSync('/dev/stdin').toString()
+    : `3
+1
+4
+5
+7
+9
+6
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30`
+).split('\n');
+
+const input = (() => {
+  let line = 0;
+  return () => stdin[line++];
+})();
+
+const total = Array.from({length:30}, (v,i)=>i+1)
+
+const array = [];
+for (let i=0; i<30; ++i){
+  const num = input()
+  array.push(Number(num))
+}
+
+const f= total.filter(x => !array.includes(x))
+f.map((item) => console.log(item))
 
 
 // 2577 숫자의 개수
@@ -198,18 +279,21 @@ const input = (() => {
 })();
 
 const t = input()
-
+let total =0;
 for(let i=0; i<t; i++){
-  const a = input().split(' ').map(Number)
+  const x = input().split(' ').map(Number)
+  x.shift();
+  const b= x.reduce((val, i) => 
+    val+i
+    )
 
-  let total = 0
-  for (let j=1; j<= a[0]; j++){
-    total += a[j]
-  }
-  const b = a.filter(num => num = num > total/a[0])
-  const answer = (b.length/a[0]*100).toFixed(3)+'%'
-  console.log(answer)
+  const average = b/x.length
+  const over =x.filter(score => score >average )
+  const result =over.length/x.length *100
+  const re_result= result.toFixed(3)+'%'
+  console.log(re_result)
 }
+ 
 
 // 4344_다른분
 let input = require('fs').readFileSync('/dev/stdin').toString().split('\n');

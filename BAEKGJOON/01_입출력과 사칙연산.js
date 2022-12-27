@@ -137,6 +137,7 @@ const t = Number(input())
 
 console.log(t - 543)
 
+
 // 10430 나머지
 const fs = require('fs');
 const stdin = (process.platform === 'linux'
@@ -161,6 +162,27 @@ console.log(((A%C) + (B%C))%C)
 console.log((A*B)%C)
 console.log(((A%C)*(B%C))%C)
 
+
+//3003 킹, 퀸, 룩, 비숍, 나이트, 폰
+const fs = require('fs');
+const { start } = require('repl');
+const stdin = (process.platform === 'linux'
+    ? fs.readFileSync('/dev/stdin').toString()
+    : `2 1 2 1 2 1`
+).split('\n');
+
+const input = (() => {
+  let line = 0;
+  return () => stdin[line++];
+})();
+
+const chess = [1,1,2,2,2,8]
+
+const t = input().split(' ').map(Number)
+
+const need = chess.map((item, i) =>  item-t[i])
+
+console.log(need.join(' '))
 
 //2588 곱셈
 const fs = require('fs');
