@@ -79,11 +79,12 @@ for (let i=0; i<t; i++){
   console.log(repeatStr)
 }
 
-// 1157 단어 공부 (왜 통과가 안될까.)
+// 1157 단어 공부
 const fs = require('fs');
+const { start } = require('repl');
 const stdin = (process.platform === 'linux'
     ? fs.readFileSync('/dev/stdin').toString()
-    : `M`
+    : `Mississipi`
 ).split('\n');
 
 const input = (() => {
@@ -91,61 +92,31 @@ const input = (() => {
   return () => stdin[line++];
 })();
 
-const t = input().toUpperCase().split('').sort() 
-const findStr= [];
-let count = 0;
+ 
+const word  = input().toUpperCase()
+let alphabets = [...new Set(word.split(''))];
 
-// 글자가 하나인경우
-for (let i=0; i<t.length; i++){
-  if (t.length === 1){                     
-    findStr.push(t[0])
-  }
+// console.log(alphabets)
 
-  // 앞 글자 또는 전글자가 같은 경우
-  if (t[i] === t[i+1] || t[i] === t[i-1]){  
-      // findStr 배열이 없거나, 가상의 findStr 배열의 글자와 같은 경우
-      if(t[i] === findStr[0]|| findStr.length === 0){
-        // console.log(findStr)
-        findStr.push(t[i])  //현재글자를 넣어줌
-        count += 1
-      } else {
-        // console.log(findStr)
-        findStr.pop()       //배열에 있거나, 글자가 다른경우 가상의 배열을 삭제
-        count -= 1
-          if (findStr.length === 0){
-            break;
-          }
-      }
-  } 
-}
-// console.log(findStr)
-console.log(findStr.length > 0?  findStr[0] :'?')
+// 제일많은 문자와 개수 초기화
+let maxChar = '';
+let maxCount = 0;
 
+for (let i = 0; i < alphabets.length; i++) {
+  // 알파벳 개수 : 문자를 알파벳으로 나눴을 때 생성되는 배열의 길이 - 1
+  let count = word.split(alphabets[i]).length - 1;
 
-//_______________________1157 나를 제외한 천재____________________________//
-// charCodeAt를 사용한 풀이
-
-let input = require('fs').readFileSync('/dev/stdin').toString().toLowerCase();
-
-const result = new Array(26).fill(0);
-
-for (let i = 0; i < input.length; i++) {
-  result[input.charCodeAt(i) - 97] ++;
-}
-
-const max = Math.max(...result);
-const index = result.indexOf(max);
-
-let isSame = false;
-
-for (let j = 0; j < 26; j++) {
-  if (result[j] === max && index != j) {
-    isSame = true;
-    break;
+  // 최대 개수보다 높으면 제일 많은 문자와 개수를 해당 알파벳과 개수로 바꿔줌
+  if (count > maxCount) {
+      maxChar = alphabets[i];
+      maxCount = count;
+      // 최대 개수와 같으면 제일 많은 문자를 ? 로 바꿔줌
+  } else if (count === maxCount) {
+      maxChar = '?';
   }
 }
 
-console.log(isSame ? "?" : String.fromCharCode(index + 65));
+console.log(maxChar)
 
 
 // 1152 단어의 개수 (빈값만 있는 테스트가 있는 점 유의!)
@@ -226,9 +197,10 @@ console.log(result)
 
 // 2941 크로아티아 알파벳 (문제 이해 필요)
 const fs = require('fs');
+const { start } = require('repl');
 const stdin = (process.platform === 'linux'
     ? fs.readFileSync('/dev/stdin').toString()
-    : `ddz=z=`
+    : `ljes=njak`
 ).split('\n');
 
 const input = (() => {
@@ -236,8 +208,13 @@ const input = (() => {
   return () => stdin[line++];
 })();
 
-let t = input().toString().trim();
-console.log(t.replace(/c=|c-|dz=|d-|lj|nj|s=|z=|./g,'a').length);
+let word  = input()
+const cro = ['c=','c-','dz=','d-','lj','nj','s=','z=']
+
+for (i of cro) {
+  word = word.split(i).join("Q"); 
+}
+console.log(word.length)
 
 
 

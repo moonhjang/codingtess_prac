@@ -260,7 +260,7 @@ for(let i=0; i<t; i++){
 }
 
 
-// 4344 평균은 넘겠지 (틀렸음.)
+// 4344 평균은 넘겠지
 const fs = require('fs');
 const { start } = require('repl');
 const stdin = (process.platform === 'linux'
