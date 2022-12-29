@@ -153,6 +153,38 @@ const V = t[2];
  
 console.log(Math.ceil((V - B) / (A - B)));
 
+// ACM 호텔
+const fs = require('fs');
+const { start } = require('repl');
+const stdin = (process.platform === 'linux'
+    ? fs.readFileSync('/dev/stdin').toString()
+    : `2
+6 12 12
+30 50 72`
+).split('\n');
+
+const input = (() => {
+  let line = 0;
+  return () => stdin[line++];
+})();
+
+const t  = input()
+
+
+for (let i=0; i<t; i++) {
+  const [h, w, n]= input().split(' ')
+
+  const height = n%h
+  const number = Math.ceil(n/h)
+  const room_height = height == 0 ? h : height
+  const room_number = number <10? `0${number}`: number
+  console.log(`${room_height}${room_number}`)
+}
+
+
+
+
+
 
 // 2839 설탕배달 (코드 다시 확인)
 let input = require('fs').readFileSync('/dev/stdin');
